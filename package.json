@@ -1,0 +1,72 @@
+{
+  "name": "power-code-ai",
+  "displayName": "Power Code AI",
+  "description": "write code in seconds with AI",
+  "publisher": "noroTechnologies",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "browser": "./dist/web/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "powerCodeAi.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "powerCodeAi.generateText",
+        "title": "Power your code"
+      },
+      {
+        "command": "powerCodeAi.explainThisCode",
+        "title": "Power Code - Explain this!"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "powerCodeAi.explainThisCode",
+          "title": "Explain this!"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "test": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. --extensionTestsPath=dist/web/test/suite/index.js",
+    "pretest": "yarn run compile-web",
+    "vscode:prepublish": "yarn run package-web",
+    "compile-web": "webpack",
+    "watch-web": "webpack --watch",
+    "package-web": "webpack --mode production --devtool hidden-source-map",
+    "lint": "eslint src --ext ts",
+    "run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.1",
+    "@types/vscode": "^1.78.0",
+    "@types/webpack-env": "^1.18.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-web": "^0.0.43",
+    "assert": "^2.0.0",
+    "eslint": "^8.39.0",
+    "mocha": "^10.2.0",
+    "process": "^0.11.10",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2"
+  },
+  "dependencies": {
+    "@dqbd/tiktoken": "^1.0.7",
+    "@vscode/iconv-lite-umd": "^0.7.0",
+    "axios": "^1.4.0",
+    "keytar": "^7.9.0",
+    "openai": "^3.2.1"
+  }
+}
