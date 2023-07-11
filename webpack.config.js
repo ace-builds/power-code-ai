@@ -62,6 +62,7 @@ const webExtensionConfig = {
   ],
   externals: {
     vscode: "commonjs vscode", // ignored because it doesn't exist
+    keytar: "commonjs keytar", // Exclude keytar from being bundled
   },
   performance: {
     hints: false,

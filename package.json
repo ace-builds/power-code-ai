@@ -15,8 +15,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "powerCodeAi.helloWorld",
-        "title": "Hello World"
+        "command": "powerCodeAi.updateKey",
+        "title": "Update Open Ai key"
       },
       {
         "command": "powerCodeAi.generateText",
