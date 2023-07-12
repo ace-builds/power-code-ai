@@ -2,7 +2,7 @@
   "name": "power-code-ai",
   "displayName": "Power Code AI",
   "description": "write code in seconds with AI",
-  "publisher": "ace_builds",
+  "publisher": "acebuilds",
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.78.0"
