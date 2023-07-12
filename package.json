@@ -7,6 +7,17 @@
   "engines": {
     "vscode": "^1.78.0"
   },
+  "icon": "images/powerCodeAi.png",
+  "pricing": "Free",
+  "author": {
+    "email": "chineduezeh19@gmail.com",
+    "name": "Augustine Chinedu Ezeh",
+    "url": "https://twitter.com/ace_builds"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Chinedu19/power-code-ai"
+  },
   "categories": [
     "Other"
   ],

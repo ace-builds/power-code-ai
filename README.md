@@ -1,65 +1,44 @@
-# power-code-ai README
+# Power Code AI README
 
-This is the README for your extension "power-code-ai". After writing up a brief description, we recommend including the following sections.
+Power Code AI is a VS Code extension that serves as your personal assistant, helping you save time and enhance your coding experience. It leverages the power of AI to generate code snippets, provide intelligent suggestions, and assist with complex logic.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Code Generation: Instantly generate code snippets based on your prompt.
+- Logic Assistance: Leverage AI to simplify complex logic and problem-solving.
+- Time-saving Automation: Automate repetitive tasks and increase productivity.
+- Explain Code: Don't understand what a certain line of code does? Ask Power Code.
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Launch VS Code.
+2. Go to the Extensions view.
+3. Search for "Power Code AI" and click "Install".
+4. Click "Reload" to activate the extension.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Usage
 
-## Requirements
+1. Open a coding file in VS Code.
+2. Access Power Code AI through commands or UI elements.
+3. Generate code snippets, receive suggestions, or seek logic assistance.
+4. Enjoy an enhanced coding experience and increased productivity.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Feedback and Support
 
-## Extension Settings
+We appreciate your feedback and suggestions! If you encounter any issues or have ideas for improvement, please [submit an issue on GitHub](link_to_github_repository) or contact our support team at support@powercodeai.com.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Contributing
 
-For example:
+Contributions are welcome! If you'd like to contribute to the development of Power Code AI, please follow these steps:
 
-This extension contributes the following settings:
+1. Fork the repository and clone it to your local machine.
+2. Install the necessary dependencies by running `yarn install`.
+3. Make your code changes and test thoroughly.
+4. Commit your changes and push them to your forked repository.
+5. Submit a pull request with a clear description of your changes.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+Please note that by contributing to this project, you agree to abide by the [Code of Conduct](https://github.com/Chinedu19/power-code-ai/blob/main/.github/CONTRIBUTING.md).
 
-## Known Issues
+## License
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This extension is released under the [MIT License](https://github.com/Chinedu19/power-code-ai/blob/main/LICENSE).
