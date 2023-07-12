@@ -18,14 +18,15 @@ import { isValidApiKey } from "./utils";
 const { generateCode, generateExplanation: explainCode } = ApiService();
 
 const generateExplanation = async (text: string, context?: string) => {
-  const isSet = isApiKeySet();
-  if (!isSet) {
-    return;
-  }
+  const isSet = await isApiKeySet();
+
   const prompt = generateExplanationPrompt(text, context);
 
   try {
-    const { text, usage } = await explainCode(prompt);
+    const result = await explainCode(prompt);
+    if (!result?.text || !result.usage) {
+      return;
+    }
     if (text) {
       showInformationMessage(text);
     }
@@ -36,23 +37,22 @@ const generateExplanation = async (text: string, context?: string) => {
 
 const suggestCode = async (text: string) => {
   const isSet = isApiKeySet();
-  if (!isSet) {
-    return;
-  }
 
   const prompt = generateCodePrompt(text);
 
   try {
     // Send the text to OpenAI API for autocompletion
-    const { text: responseText, usage } = await generateCode(prompt);
+    const result = await generateCode(prompt);
     // const completion = await openai.createCompletion();
-
-    if (typeof responseText === "string") {
-      insertTextIntoEditor(responseText);
+    if (!result?.text || !result.usage) {
+      return;
     }
-    console.log(usage);
+    if (typeof result.text === "string") {
+      insertTextIntoEditor(result.text);
+    }
+    console.log(result.usage);
     showInformationMessage(
-      `${usage?.total_tokens} tokens were used in this request`
+      `${result.usage?.total_tokens} tokens were used in this request`
     );
   } catch (e) {
     showErrorMessage("An error occured");

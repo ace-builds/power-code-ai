@@ -19,6 +19,13 @@ export async function getApiKey() {
   );
 }
 
+export async function removeAPiKey() {
+  return await keytar.deletePassword(
+    credentials.openaiKeyService,
+    credentials.openaiKeyAccount
+  );
+}
+
 export const isApiKeySet = async (hideMessage?: boolean) => {
   const apiKey = await getApiKey();
 
