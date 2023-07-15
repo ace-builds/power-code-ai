@@ -1,6 +1,6 @@
-# Power Code AI README
+# Power Code AI
 
-Power Code AI is a VS Code extension that serves as your personal assistant, helping you save time and enhance your coding experience. It leverages the power of AI to generate code snippets, provide intelligent suggestions, and assist with complex logic.
+Power Code AI is a VS Code extension that serves as your personal assistant, helping you save time and enhance your coding experience. It uses Open AI to leverage the power of AI to generate code snippets, provide intelligent suggestions, and assist with complex logic.
 
 ## Features
 
@@ -16,6 +16,19 @@ Power Code AI is a VS Code extension that serves as your personal assistant, hel
 3. Search for "Power Code AI" and click "Install".
 4. Click "Reload" to activate the extension.
 
+## Open AI API Key
+
+Power Code AI requires an Open AI API key to function. To use the extension, follow these steps:
+
+1. Obtain an Open AI API key by signing up on the Open AI website. [Get it here](https://platform.openai.com/account/api-keys)
+2. Once you have the API key, add it to Power Code AI:
+   - Click on the settings icon on the left sidebar.
+   - Select "Command Palette".
+   - Search for "Update API key" and select the option.
+   - Paste your Open AI API key in the input field.
+
+Please note that the API key is saved on your computer and used solely for the purpose of providing AI-powered features in the extension.
+
 ## Usage
 
 1. Open a coding file in VS Code.
@@ -23,9 +36,13 @@ Power Code AI is a VS Code extension that serves as your personal assistant, hel
 3. Generate code snippets, receive suggestions, or seek logic assistance.
 4. Enjoy an enhanced coding experience and increased productivity.
 
+## Demo Video
+
+[![Power Code AI Demo](link_to_demo_video_thumbnail)](link_to_demo_video)
+
 ## Feedback and Support
 
-We appreciate your feedback and suggestions! If you encounter any issues or have ideas for improvement, please [submit an issue on GitHub](link_to_github_repository) or contact our support team at support@powercodeai.com.
+We appreciate your feedback and suggestions! If you encounter any issues or have ideas for improvement, please [submit an issue on GitHub](https://github.com/Chinedu19/power-code-ai) or contact our support team at chineduezeh19@gmail.com.
 
 ## Contributing
 

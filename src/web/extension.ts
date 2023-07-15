@@ -158,12 +158,7 @@ export async function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  context.subscriptions.push(
-    updateKey,
-    updateKey,
-    generateAndInsertText,
-    explainThisCode
-  );
+  context.subscriptions.push(updateKey, generateAndInsertText, explainThisCode);
 }
 
 // This method is called when your extension is deactivated

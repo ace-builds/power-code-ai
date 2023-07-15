@@ -4,6 +4,15 @@ import { CreateCompletionResponse } from "openai";
 import { removeAPiKey } from "../storage/apiKeyStorage";
 import { executeCommand, showErrorMessage } from "../utils/vscode";
 
+interface ValidationError {
+  error: {
+    message: string;
+    code: string;
+    param: string | null;
+    type: string;
+  };
+}
+
 function ApiService() {
   const generateCode = async (prompt: string) => {
     try {
@@ -22,13 +31,14 @@ function ApiService() {
       const text = choices[0].text?.trim();
       return { text, usage };
     } catch (e: any) {
-      console.log(e);
-      const error = e as AxiosError;
+      const error = e as AxiosError<ValidationError, Record<string, unknown>>;
       if (error.response?.status === 401) {
         await removeAPiKey();
         showErrorMessage("Your open AI key is invalid, Insert a new one");
         await executeCommand("powerCodeAi.updateKey");
       } else {
+        const errorMessage = error.response?.data?.error?.message as string;
+        showErrorMessage(errorMessage);
         throw new Error(e);
       }
     }
@@ -54,14 +64,15 @@ function ApiService() {
         return { text, usage };
       }
     } catch (e: any) {
-      console.log(e);
-      const error = e as AxiosError;
+      const error = e as AxiosError<ValidationError, Record<string, unknown>>;
       if (error.response?.status === 401) {
         await removeAPiKey();
         showErrorMessage("Your open AI key is invalid, Insert a new one");
         await executeCommand("powerCodeAi.updateKey");
         return;
       } else {
+        const errorMessage = error.response?.data?.error?.message as string;
+        showErrorMessage(errorMessage);
         throw new Error(e);
       }
     }
