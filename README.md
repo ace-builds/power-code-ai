@@ -38,7 +38,7 @@ Please note that the API key is saved on your computer and used solely for the p
 
 ## Demo Video
 
-[![Power Code AI Demo](https://github.com/Chinedu19/power-code-ai/assets/40624669/70c8c9dc-f985-4c9c-a481-4aa5be4d5493)](https://www.youtube.com/watch?v=wg0IfM70zFs))
+[![Power Code AI Demo](https://github.com/Chinedu19/power-code-ai/assets/40624669/70c8c9dc-f985-4c9c-a481-4aa5be4d5493)](https://www.youtube.com/watch?v=wg0IfM70zFs)
 
 ## Feedback and Support
 
