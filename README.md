@@ -37,8 +37,8 @@ Please note that the API key is saved on your computer and used solely for the p
 4. Enjoy an enhanced coding experience and increased productivity.
 
 ## Demo Video
-
-[![Power Code AI Demo](https://github.com/Chinedu19/power-code-ai/assets/40624669/70c8c9dc-f985-4c9c-a481-4aa5be4d5493)](https://www.youtube.com/watch?v=wg0IfM70zFs)
+Watch how to make use of the extension with video
+[![Power Code AI Demo](https://github.com/Chinedu19/power-code-ai/assets/40624669/eda98a19-6bbf-4285-a2c2-da94a6c25753)](https://www.youtube.com/watch?v=wg0IfM70zFs)
 
 ## Feedback and Support
 
