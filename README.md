@@ -38,11 +38,12 @@ Please note that the API key is saved on your computer and used solely for the p
 
 ## Demo Video
 
-[![Power Code AI Demo](link_to_demo_video_thumbnail)](link_to_demo_video)
+[![Power Code AI Demo](https://github.com/Chinedu19/power-code-ai/assets/40624669/70c8c9dc-f985-4c9c-a481-4aa5be4d5493)](https://www.youtube.com/watch?v=wg0IfM70zFs))
 
 ## Feedback and Support
 
 We appreciate your feedback and suggestions! If you encounter any issues or have ideas for improvement, please [submit an issue on GitHub](https://github.com/Chinedu19/power-code-ai) or contact our support team at chineduezeh19@gmail.com.
+
 
 ## Contributing
 
