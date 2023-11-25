@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import { isApiKeySet, setApiKey } from "./storage/apiKeyStorage";
+import { ApiKeyCredentialsProvider } from "./storage/apiKeyStorage";
 import ApiService from "./api/service";
 import {
   executeCommand,
@@ -17,54 +17,55 @@ import { isValidApiKey } from "./utils";
 
 const { generateCode, generateExplanation: explainCode } = ApiService();
 
-const generateExplanation = async (text: string, context?: string) => {
-  const isSet = await isApiKeySet();
-
-  const prompt = generateExplanationPrompt(text, context);
-
-  try {
-    const result = await explainCode(prompt);
-    if (!result?.text || !result.usage) {
-      return;
-    }
-    if (text) {
-      showInformationMessage(text);
-    }
-  } catch (e) {
-    showErrorMessage("An error occured");
-  }
-};
-
-const suggestCode = async (text: string) => {
-  const isSet = isApiKeySet();
-
-  const prompt = generateCodePrompt(text);
-
-  try {
-    // Send the text to OpenAI API for autocompletion
-    const result = await generateCode(prompt);
-    // const completion = await openai.createCompletion();
-    if (!result?.text || !result.usage) {
-      return;
-    }
-    if (typeof result.text === "string") {
-      insertTextIntoEditor(result.text);
-    }
-    console.log(result.usage);
-    showInformationMessage(
-      `${result.usage?.total_tokens} tokens were used in this request`
-    );
-  } catch (e) {
-    showErrorMessage("An error occured");
-  }
-};
-
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
-export async function activate(context: vscode.ExtensionContext) {
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
+export async function activate({
+  subscriptions,
+  secrets,
+}: vscode.ExtensionContext) {
+  const apiKeyManager = ApiKeyCredentialsProvider.getInstance(secrets);
+
+  const generateExplanation = async (text: string, context?: string) => {
+    const isSet = await apiKeyManager.isApiKeySet();
+
+    const prompt = generateExplanationPrompt(text, context);
+
+    try {
+      const result = await explainCode(prompt);
+      if (!result?.text || !result.usage) {
+        return;
+      }
+      if (text) {
+        showInformationMessage(text);
+      }
+    } catch (e) {
+      showErrorMessage("An error occured");
+    }
+  };
+
+  const suggestCode = async (text: string) => {
+    const isSet = apiKeyManager.isApiKeySet();
+
+    const prompt = generateCodePrompt(text);
+
+    try {
+      // Send the text to OpenAI API for autocompletion
+      const result = await generateCode(prompt);
+      // const completion = await openai.createCompletion();
+      if (!result?.text || !result.usage) {
+        return;
+      }
+      if (typeof result.text === "string") {
+        insertTextIntoEditor(result.text);
+      }
+      console.log(result.usage);
+      showInformationMessage(
+        `${result.usage?.total_tokens} tokens were used in this request`
+      );
+    } catch (e) {
+      showErrorMessage("An error occured");
+    }
+  };
 
   let updateKey = vscode.commands.registerCommand(
     "powerCodeAi.updateKey",
@@ -78,7 +79,7 @@ export async function activate(context: vscode.ExtensionContext) {
       });
 
       if (apiKey && isValidApiKey(apiKey)) {
-        await setApiKey(apiKey);
+        await apiKeyManager.setApiKey(apiKey);
         showInformationMessage("OpenAI API key has been saved successfully.");
       } else {
         showWarningMessage(
@@ -158,7 +159,7 @@ export async function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  context.subscriptions.push(updateKey, generateAndInsertText, explainThisCode);
+  subscriptions.push(updateKey, generateAndInsertText, explainThisCode);
 }
 
 // This method is called when your extension is deactivated
