@@ -27,22 +27,22 @@
     "commands": [
       {
         "command": "powerCodeAi.updateKey",
-        "title": "Update Open Ai key"
+        "title": "PowerCodeAI: Update Open Ai key"
       },
       {
         "command": "powerCodeAi.generateText",
-        "title": "Power your code"
+        "title": "PowerCodeAI: Power your code"
       },
       {
         "command": "powerCodeAi.explainThisCode",
-        "title": "Power Code - Explain this!"
+        "title": "PowerCodeAI: Explain this!"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "command": "powerCodeAi.explainThisCode",
-          "title": "Explain this!"
+          "title": "PowerCodeAI: Explain this!"
         }
       ]
     }

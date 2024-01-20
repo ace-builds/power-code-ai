@@ -3,17 +3,19 @@ import { credentials } from "../config";
 import { executeCommand, showErrorMessage } from "../utils/vscode";
 import { SecretStorage } from "vscode";
 
-export class ApiKeyCredentialsProvider {
-  private static instance: ApiKeyCredentialsProvider;
-  private constructor(private secretStorage?: SecretStorage) {}
+export interface ICredentialsProvider {
 
-  static getInstance(secretStorage?: SecretStorage): ApiKeyCredentialsProvider {
-    if (!ApiKeyCredentialsProvider.instance) {
-      ApiKeyCredentialsProvider.instance = new ApiKeyCredentialsProvider(
-        secretStorage
-      );
+  getApiKey(): Promise<string | undefined>;
+  setApiKey(apiKey: string): Promise<void>;
+  removeAPiKey(): Promise<boolean>;
+
+}
+
+export class ApiKeyCredentialsProvider implements ICredentialsProvider {
+  constructor(private secretStorage: SecretStorage) {
+    if (secretStorage) {
+      this.secretStorage = secretStorage
     }
-    return ApiKeyCredentialsProvider.instance;
   }
 
   getApiKey(): Promise<string | undefined> {

@@ -15,7 +15,7 @@ import {
 import { generateCodePrompt, generateExplanationPrompt } from "./utils/prompt";
 import { isValidApiKey } from "./utils";
 
-const { generateCode, generateExplanation: explainCode } = ApiService();
+
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -23,10 +23,9 @@ export async function activate({
   subscriptions,
   secrets,
 }: vscode.ExtensionContext) {
-  const apiKeyManager = ApiKeyCredentialsProvider.getInstance(secrets);
+  const { generateCode, generateExplanation: explainCode } = ApiService(secrets);
 
   const generateExplanation = async (text: string, context?: string) => {
-    const isSet = await apiKeyManager.isApiKeySet();
 
     const prompt = generateExplanationPrompt(text, context);
 
@@ -44,7 +43,6 @@ export async function activate({
   };
 
   const suggestCode = async (text: string) => {
-    const isSet = apiKeyManager.isApiKeySet();
 
     const prompt = generateCodePrompt(text);
 
@@ -79,6 +77,7 @@ export async function activate({
       });
 
       if (apiKey && isValidApiKey(apiKey)) {
+        const apiKeyManager = new ApiKeyCredentialsProvider(secrets);
         await apiKeyManager.setApiKey(apiKey);
         showInformationMessage("OpenAI API key has been saved successfully.");
       } else {
@@ -163,4 +162,4 @@ export async function activate({
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
