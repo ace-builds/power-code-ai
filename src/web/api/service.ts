@@ -1,7 +1,7 @@
 import { AxiosError, AxiosResponse } from "axios";
 import axiosInstance from "../axios";
 import { CreateCompletionResponse } from "openai";
-import { removeAPiKey } from "../storage/apiKeyStorage";
+import { ApiKeyCredentialsProvider } from "../storage/apiKeyStorage";
 import { executeCommand, showErrorMessage } from "../utils/vscode";
 
 interface ValidationError {
@@ -14,6 +14,7 @@ interface ValidationError {
 }
 
 function ApiService() {
+  const apiKeyManager = ApiKeyCredentialsProvider.getInstance();
   const generateCode = async (prompt: string) => {
     try {
       const response: AxiosResponse<CreateCompletionResponse> =
@@ -33,7 +34,7 @@ function ApiService() {
     } catch (e: any) {
       const error = e as AxiosError<ValidationError, Record<string, unknown>>;
       if (error.response?.status === 401) {
-        await removeAPiKey();
+        await apiKeyManager.removeAPiKey();
         showErrorMessage("Your open AI key is invalid, Insert a new one");
         await executeCommand("powerCodeAi.updateKey");
       } else {
@@ -66,7 +67,7 @@ function ApiService() {
     } catch (e: any) {
       const error = e as AxiosError<ValidationError, Record<string, unknown>>;
       if (error.response?.status === 401) {
-        await removeAPiKey();
+        await apiKeyManager.removeAPiKey();
         showErrorMessage("Your open AI key is invalid, Insert a new one");
         await executeCommand("powerCodeAi.updateKey");
         return;

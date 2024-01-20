@@ -1,0 +1,6 @@
+# Ignore artifacts:
+build
+coverage
+
+#ignore all swimm documents
+**/*.sw.md
